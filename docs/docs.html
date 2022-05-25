@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>BUA 455 - Week 2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Penelope Pooler Eisenbies" />
+    <meta name="date" content="2022-05-25" />
+    <script src="docs_files/header-attrs/header-attrs.js"></script>
+    <link href="docs_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="docs_files/panelset/panelset.js"></script>
+    <link href="docs_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="docs_files/tile-view/tile-view.js"></script>
+    <script src="docs_files/xaringanExtra_fit-screen/fit-screen.js"></script>
+    <link href="docs_files/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="docs_files/animate.css/animate.xaringan.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+background-image: url("docs_files/images/sloth_faded.png")
+background-size: cover
+
+class: bottom, right
+
+## BUA 455 - Week 2
+
+### Introduction to dplyr commands and ggplot  
+
+&lt;br&gt;
+
+
+#### Penelope Pooler Eisenbies
+
+#### 2022-05-25
+
+[Wikipedia Sloth Page](https://en.wikipedia.org/wiki/Sloth)
+
+---
+
+### R Global General Options
+
+.pull-left[
+
+- Few simple options can greatly help you.
+
+- Workspace:
+
+   - Set save workspace to **Never**
+   
+- Maintain defaults for 
+
+   - Restore most recently opened project at startup
+   
+   - Always save history
+   
+   - These two options can help you if R crashes or your computer does.
+
+
+
+]
+
+.pull-right[
+
+![Helpful R general options](docs_files/images/R_general_options.png)
+
+]
+
+
+---
+
+### R Global Appearance Options
+
+.pull-left[
+
+- Changing RStudio appearance options may ease eye strain.
+
+- On a Mac go to:
+
+   - RStudio &gt; Preferences &gt; Appearance
+  
+- On a Windows OS go to:
+
+   - Tools &gt; Global Options &gt; Appearance
+   
+- You also may switch between `Source` and `Visual` mode.
+
+   - Some options (like  slides) only work with `Source` mode.
+   
+   - Standard R Markdown HTML files work with either mode.
+   
+   - `Visual` mode is helpful, but can cause editing glitches.
+]
+
+.pull-right[
+
+![RStudio Global Options menu](docs_files/images/RStudio_appearance.png)
+
+]
+
+---
+
+
+### Reminders:
+
+#### Pre-class Survey Due Wed. 9/7
+
+#### HW 1 (Parts 1, 2, and 3) Due 9/7
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
+
+Textbook: A [list of useful sections can be found here](https://docs.Google.com/spreadsheets/d/1yhUSJAJQ4VVjVBpiv3_C2D3tQs2SmJjynSq9chqXOwc/edit?usp=sharing) and will be updated as the course progresses.
+
+]
+
+#### Reminders from Week 1 
+
+**File Management:**
+
+- Creating an R Project 
+
+  - Adding a `code_data_output` folder
+  
+  - saving an R Markdown folder to this folder
+  
+- Editing a setup chunk in a new RMarkdown file
+
+- Creating and editing R chunks
+
+---
+
+### Reminders from Week 1 
+
+**Data Management:**
+
+- Selecting data by rows and columns with square brackets
+
+- Examining data with R commands: `glimpse`, `summary`, `unique`, `table`
+
+- Types of variables
+
+   - numeric variables (*`&lt;dbl&gt;`*, *`&lt;int&gt;`*)
+   
+   - categorical variables (*`&lt;chr&gt;`*, *`&lt;fct&gt;`*, *`&lt;ord&gt;`*)
+   
+   - Type of variable dictates how we examine, summarize and present the data
+
+- Using piping, `|&gt;` to write R code more efficiently.
+
+- Using the `c()` operator to create a group of values
+
+- Using `$` to specify a variable within a dataset
+
+- Using `%in%` to specify a group for values
+
+---
+
+### Additional R syntax
+
+- [Operators in R](https://www.statmethods.net/management/operators.html)
+
+
+### Week 2 In-class Exercises (TP L3 - Q1)
+
+***TurningPoint Session ID: bua455s22***
+
+Use the **Operators in R** reference link above to find the operator that is put before **`=`** to indicate **not equal to**.
+
+This same operator can be put before any value, e.g., **`X`**, to indicate **not X**.
+
+---
+
+### Introduction to `dplyr`
+
+Recall the `starwars` data from Week 1
+
+
+
+
+.pull-left[
+
+#### Original data
+
+
+```r
+my_starwars |&gt; glimpse(width=40)
+```
+
+```
+## Rows: 87
+## Columns: 14
+## $ name       &lt;chr&gt; "Luke Skywalker", "…
+## $ height     &lt;int&gt; 172, 167, 96, 202, …
+## $ mass       &lt;dbl&gt; 77, 75, 32, 136, 49…
+## $ hair_color &lt;chr&gt; "blond", NA, NA, "n…
+## $ skin_color &lt;chr&gt; "fair", "gold", "wh…
+## $ eye_color  &lt;chr&gt; "blue", "yellow", "…
+## $ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, …
+## $ sex        &lt;chr&gt; "male", "none", "no…
+## $ gender     &lt;chr&gt; "masculine", "mascu…
+## $ homeworld  &lt;chr&gt; "Tatooine", "Tatooi…
+## $ species    &lt;chr&gt; "Human", "Droid", "…
+## $ films      &lt;list&gt; &lt;"The Empire Strik…
+## $ vehicles   &lt;list&gt; &lt;"Snowspeeder", "I…
+## $ starships  &lt;list&gt; &lt;"X-wing", "Imperi…
+```
+
+]
+
+.pull-right[
+
+#### Modified data
+
+
+```r
+my_starwars_plt |&gt; glimpse(width=40)
+```
+
+```
+## Rows: 26
+## Columns: 5
+## $ species &lt;chr&gt; "Human", "Droid", "Dro…
+## $ sex     &lt;chr&gt; "male", "none", "none"…
+## $ height  &lt;int&gt; 172, 167, 96, 202, 150…
+## $ mass    &lt;dbl&gt; 77, 75, 32, 136, 49, 1…
+## $ bmi     &lt;dbl&gt; 26.02758, 26.89232, 34…
+```
+
+]
+
+---
+
+.panelset[
+
+.panel[.panel-name[**Complete Data Management**]
+
+### Data Mgmt for a Boxplot Visualization
+
+In Week 1, we looked briefly at a preview of some data management of the `starwars` data for a boxplot visualization:
+
+
+```r
+# dataset my_starwars_plt is created for a plot
+# used select command to select variables
+# used filter command to filter data to only to species, Humans and Droid
+# used mutate command to create new variable bmi
+  # bmi = weight(kg)/height(m)^2
+# filtered out observations where bmi was a missing value, NA
+my_starwars_plt &lt;- my_starwars |&gt;
+  select(species, sex, height, mass) |&gt;
+  filter(species %in% c("Human", "Droid")) |&gt;
+  mutate(bmi = mass/((height/100))^2) |&gt;
+  filter(!is.na(bmi)) 
+```
+
+.center[
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt4[
+**Today we will examine each data management step above in the subsequent panels of this slide.**
+
+]] 
+
+]
+
+.panel[.panel-name[**Select Variables**]
+
+- Use the `select` command in the `dplyr` package to select variables.
+
+- The `select` command also orders the variables as as written in the command.
+
+- We save this dataset with fewer variables as a **NEW** dataset, `my_starwars_plt`.
+
+- `glimpse` is NOT required at each step but we will use here to examine the dataset modifications.
+
+
+```r
+# select variables using select command and save as my_starwars_plt
+# notice that the pipe operator |&gt; is used to make data management more efficient
+
+*my_starwars_plt &lt;- my_starwars |&gt;       # save as new dataset
+* select(species, sex, height, mass) |&gt; # select command
+  glimpse(width=60)
+```
+
+```
+## Rows: 87
+## Columns: 4
+## $ species &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human…
+## $ sex     &lt;chr&gt; "male", "none", "none", "male", "female", …
+## $ height  &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183,…
+## $ mass    &lt;dbl&gt; 77, 75, 32, 136, 49, 120, 75, 32, 84, 77, …
+```
+
+]
+
+.panel[.panel-name[**Filter Observations**]
+
+- The `filter` command in the `dplyr` package is one common way to filter data.
+
+- Datasets can be filtered by numeric values, or character (text), or factor levels
+
+- A **very** useful operator for selecting data from specific categories is `%in%`, contained in.
+
+
+```r
+# filter the data to include only two levels (categories) of species, Human and Droid
+my_starwars_plt &lt;- my_starwars |&gt;
+  select(species, sex, height, mass) |&gt;
+* filter(species %in% c("Human", "Droid")) |&gt; # filter command
+  glimpse(width=60)
+```
+
+```
+## Rows: 41
+## Columns: 4
+## $ species &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human…
+## $ sex     &lt;chr&gt; "male", "none", "none", "male", "female", …
+## $ height  &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183,…
+## $ mass    &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0…
+```
+
+]
+
+.panel[.panel-name[**New Variable**]
+
+- The `mutate` command in the `dplyr` package can be used to create a new variable.
+
+- New variables can be created from other variables or can overwrite variables (be careful)
+
+- We will use `mutate` for many varied tasks throughout this course.
+
+
+```r
+# bmi is calculated from mass and height using the mutate command
+# height data is scaled to centimeters and squared
+my_starwars_plt &lt;- my_starwars |&gt;
+  select(species, sex, height, mass) |&gt;
+  filter(species %in% c("Human", "Droid")) |&gt;
+* mutate(bmi = mass/((height/100))^2) |&gt;      # mutate command
+  glimpse()
+```
+
+```
+## Rows: 41
+## Columns: 5
+## $ species &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human", "Human", "Human", "Droid", "Human"…
+## $ sex     &lt;chr&gt; "male", "none", "none", "male", "female", "male", "female", "none", "male", "ma…
+## $ height  &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 180, 170, 180, 170, 1…
+## $ mass    &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.0, 84.0, NA, 80.0, 7…
+## $ bmi     &lt;dbl&gt; 26.02758, 26.89232, 34.72222, 33.33007, 21.77778, 37.87401, 27.54821, 34.00999,…
+```
+
+]
+
+.panel[.panel-name[**Remove `NA`s**]
+
+- A common task in Data Management is removing missing values.
+
+- In R these are denoted as `NA`
+
+- Missing values can be filtered out using `filter`, the command `is.na`, and the operator `!`.
+
+
+```r
+# final step below excludes observations for which BMI is missing
+my_starwars_plt &lt;- my_starwars |&gt;
+  select(species, sex, height, mass) |&gt;
+  filter(species %in% c("Human", "Droid")) |&gt;
+  mutate(bmi = mass/((height/100))^2) |&gt;
+* filter(!is.na(bmi)) |&gt;                      # filter out NA's
+  glimpse(width=60)
+```
+
+```
+## Rows: 26
+## Columns: 5
+## $ species &lt;chr&gt; "Human", "Droid", "Droid", "Human", "Human…
+## $ sex     &lt;chr&gt; "male", "none", "none", "male", "female", …
+## $ height  &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183,…
+## $ mass    &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0…
+## $ bmi     &lt;dbl&gt; 26.02758, 26.89232, 34.72222, 33.33007, 21…
+```
+
+
+]
+
+]
+
+---
+
+class: middle
+
+### Week 2 In-class Exercises (TP L3 - Q2)
+
+.pull-left[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+***TurningPoint Session ID: bua455s22***
+
+The select command is used to select `___` and can be used to `___` them.
+
+]
+
+.pull-right[
+
+![clever owl](docs_files/images/owl.png)
+
+]
+
+---
+
+### **`slice`** and More about **`filter`**
+
+In both examples below, three variables of the `my_starwars` data are selected.
+
+.pull-left[
+- Data can be sliced by row location
+
+
+```r
+# slice data to first 5 rows and last 5 rows
+(my_starwars_sliced &lt;- my_starwars |&gt;
+  select(name, height, species) |&gt;
+  slice(1:5, 83:87))                              #&gt;&gt;
+```
+
+```
+## # A tibble: 10 × 3
+##    name           height species
+##    &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;  
+##  1 Luke Skywalker    172 Human  
+##  2 C-3PO             167 Droid  
+##  3 R2-D2              96 Droid  
+##  4 Darth Vader       202 Human  
+##  5 Leia Organa       150 Human  
+##  6 Rey                NA Human  
+##  7 Poe Dameron        NA Human  
+##  8 BB8                NA Droid  
+##  9 Captain Phasma     NA &lt;NA&gt;   
+## 10 Padmé Amidala     165 Human
+```
+]
+
+.pull-right[
+
+- Data can be filtered by numerical values
+
+
+```r
+# filter data to heights of 200 or more
+(my_starwars_tall &lt;- my_starwars |&gt; 
+  select(name, height, species) |&gt;
+  filter(height &gt;= 200))                          #&gt;&gt;
+```
+
+```
+## # A tibble: 11 × 3
+##    name         height species 
+##    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;   
+##  1 Darth Vader     202 Human   
+##  2 Chewbacca       228 Wookiee 
+##  3 IG-88           200 Droid   
+##  4 Roos Tarpals    224 Gungan  
+##  5 Rugor Nass      206 Gungan  
+##  6 Yarael Poof     264 Quermian
+##  7 Lama Su         229 Kaminoan
+##  8 Taun We         213 Kaminoan
+##  9 Grievous        216 Kaleesh 
+## 10 Tarfful         234 Wookiee 
+## 11 Tion Medon      206 Pau'an
+```
+
+]
+
+
+
+---
+
+.panelset[
+
+.panel[.panel-name[**Basic boxplot**]
+
+.pull-left[
+
+
+```r
+# useful for simple plots
+my_starwars_plt |&gt; 
+  ggplot() +
+* geom_boxplot(aes(x=species, y=bmi))
+```
+
+&lt;img src="docs_files/figure-html/unnamed-chunk-1-1.png" width="504" /&gt;
+
+]
+
+.pull-right[
+
+
+```r
+# useful for overlaying plot features
+my_starwars_plt |&gt; 
+* ggplot(aes(x=species, y=bmi)) +
+  geom_boxplot()
+```
+
+&lt;img src="docs_files/figure-html/unnamed-chunk-2-1.png" width="504" /&gt;
+
+]
+
+]
+
+
+
+
+.panel[.panel-name[**Saved Plot**]
+
+
+```r
+*(sw_box1 &lt;- my_starwars_plt |&gt;
+  ggplot() +
+* geom_boxplot(aes(x=species, y=bmi)))
+```
+
+&lt;img src="docs_files/figure-html/unformatted saved boxplot-1.png" width="576" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[**`fill` option**]
+
+
+```r
+(sw_box2 &lt;- my_starwars_plt |&gt; 
+  ggplot() +
+* geom_boxplot(aes(x=species, y=bmi, fill=sex)))
+```
+
+&lt;img src="docs_files/figure-html/saved boxplot with fill-1.png" width="576" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[**format background**]
+
+
+```r
+(sw_box3 &lt;- my_starwars_plt |&gt; 
+  ggplot() +
+  geom_boxplot(aes(x=species, y=bmi, fill=sex)) +
+* theme_classic())
+```
+
+&lt;img src="docs_files/figure-html/saved boxplot with fill and theme-1.png" width="576" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[**R code - Final Plot**]
+
+
+```r
+# created a factor variable sexF to modify order (levels) for plot
+my_starwars_plt &lt;- my_starwars_plt |&gt;
+  mutate(sexF = factor(sex, 
+                       levels = c("male", "female", "none"),
+                       labels =c("Male", "Female", "None")))
+
+# formatted plot with factor variable, text formatted, and borders
+*sw_box4 &lt;- my_starwars_plt |&gt;
+* ggplot() +
+* geom_boxplot(aes(x=species, y=bmi, fill=sexF)) +
+* theme_classic() +
+  labs(title="Comparison of Human and Droid BMI",
+       subtitle="22 Humans and 4 Droids from Star Wars Universe",
+       caption="Data Source: dplyr package in R",
+       x="",y="BMI", fill="Sex") + 
+  theme(plot.title = element_text(size = 20),
+        plot.subtitle = element_text(size = 15),
+        axis.title = element_text(size=18),
+        axis.text = element_text(size=15),
+        plot.caption = element_text(size = 10),
+        legend.text = element_text(size = 12),
+        legend.title = element_text(size = 15),
+        panel.border = element_rect(colour = "lightgrey", fill=NA, size=2),
+        plot.background = element_rect(colour = "darkgrey", fill=NA, size=2))
+```
+
+]
+
+.panel[.panel-name[**Final Plot**]
+
+.center[
+
+&lt;img src="docs_files/figure-html/final plot-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+]]]
+
+---
+
+### Showing Plots in A Grid
+
+Final plot  is simplified for showing in the 2x2 grid
+
+
+
+.center[
+
+```r
+(sw_grid &lt;- grid.arrange(sw_box1, sw_box2, sw_box3, sw_box4_grid, ncol=2))   #2x2 grid of plots
+```
+
+&lt;img src="docs_files/figure-html/4 plots in a grid-1.png" width="720" style="background-color: #ADB3B8; padding:5px" /&gt;
+
+```
+## TableGrob (2 x 2) "arrange": 4 grobs
+##   z     cells    name           grob
+## 1 1 (1-1,1-1) arrange gtable[layout]
+## 2 2 (1-1,2-2) arrange gtable[layout]
+## 3 3 (2-2,1-1) arrange gtable[layout]
+## 4 4 (2-2,2-2) arrange gtable[layout]
+```
+]
+
+---
+
+### Exporting a Plot: Two Methods
+
+.pull-left[
+**Method 1:**
+
+i. Right click on plot on right
+ii. Select 'Save image as...'
+iii. Save imagr as .png file (or other preference)
+
+***Notes***
+
+- This method is very quick and is great for saving one plot at a time.
+
+- Ideally work should be saved to your `code_data_output` folder.
+
+**Method 2:**
+
+ Use `png` (or similar) command(s):
+ 
+- Other file formats include `.jpg, .tif, .exp`
+
+
+```r
+# export plot as png file using png command
+png("StarWars_BMI_Boxplot.png") # file name
+sw_box4   # name of R plot               
+dev.off() # ends export
+```
+
+]
+
+.pull-right[
+&lt;img src="docs_files/figure-html/print final plot-1.png" width="576" /&gt;
+]
+
+---
+
+### Creating a README File
+
+.pull-left[
+
+**in HW 2 you will:**
+
+- Create and modify an R Markdown file
+
+- Knit R Markdown file to create an HTML file 
+
+- Create a README file 
+
+**A README file documents all files in your R project**
+
+- README files can be simple or complex.
+
+- BUA 455 will use one README file format
+
+   - [Empty README file template]()
+
+   - [Completed README file for Week 2 lectures]()
+
+**Editing a README.txt file**
+
+  - in RStudio: File &gt; Open File &gt; click on file
+  
+  - in ***Notepad*** (Windows OS) or ***TextEdit*** (Mac OS)
+
+]
+  
+.pull-right[
+
+![busy beaver:scale 50%](docs_files/images/beaver.png)
+]
+
+---
+
+class: middle
+
+### Week 2 In-class Exercises (TP L3 - Q3 &amp; Q4)
+
+.pull-left[
+
+&lt;br&gt;
+
+***TurningPoint Session ID: bua455s22***
+
+**`Q3.`** What type of file is the README file?
+
+&lt;br&gt;
+
+**`Q4.`** We will use the `pacman` R package, in every lecture, and assignment because which simplifies installing a loading other packages.
+
+There is another package (actually it's a package suite) that includes both `dplyr` and `ggplot2` that we will will we use in every lecture and assignment and quiz in BUA 455.
+
+The name of this package suite is `____`.
+
+
+]
+
+.pull-right[
+
+![clever owl](docs_files/images/owl.png)
+
+]
+  
+---
+
+### Introduction to HW 2
+
+.pull-left[
+**In class we will work through HW 2 Instructions**
+
+Students are required to ***work with a partner*** at least once (HW 2, HW 3, or HW 4).
+
+   - Both partners are responsible for understanding all coding 
+   
+   - Working with a partner at least once will help during group project.
+   
+**My Recommendation for Easy Collaboration:**
+
+  - Create two copies of the R project, one for each partner
+  
+  - Email or share .Rmd file only
+  
+** GitHub is used for Collaboration and Version Control**
+
+  - Not required in this course
+  
+  - Will discuss and possibly demo after Quiz 2
+
+]
+
+.pull-right[
+
+![clever owl](docs_files/images/owl.png)
+]
+
+
+---
+
+.panelset[
+
+.panel[.panel-name[**HW 2 Purpose**]
+
+.pull-left[
+
+[HW Assignment 2]() will give you experience with:
+
+- Sharing an R project with a partner (if you choose)
+
+   - Only required once for HW 2, HW 3 , or HW 4
+
+- Creating an R Project Directory and a code_data_output folder (Review)
+
+- Creating, saving, using an R Markdown file (Review)
+
+- Knitting (rendering) an R Markdown file to create an HTML file
+
+- Creating a README file
+
+- Working with a larger dataset
+
+- Using the `dplyr` package to `select` variables and `slice` and `filter` data
+
+- Creating a basic plot with minimal formatting
+
+]
+
+.pull-right[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+![busy beaver](docs_files/images/beaver.png)
+
+]
+
+]
+
+.panel[.panel-name[**First Steps: 0-2**]
+
+**`0.`** If you want to work with a partner on HW 2:
+
+- BEFORE you begin in R: 
+    
+   - Choose your partner
+     
+   - discuss how you will share `.Rmd` files (email or shared drive)
+   
+**`1.`** Each student will create a new R project.
+
+- Project Name:
+
+   - If working with partner: 'HW 2 LastName1 LastName2'.
+   
+   - If working solo: 'HW2 FirstName LastName
+   
+**`2.`** Create a folder in your R project labeled `code_data_output`.
+
+]
+
+.panel[.panel-name[**First Steps: 3**]
+  
+**`3.`** Download the provided file, [`HW2_Template.Rmd`]()
+
+- Save it to your code_data_output folder
+   
+- Change title to be 'HW 2'
+   
+- Specify all authors 
+   
+   - 1 Person: "Penelope Pooler"
+   - 2 Partners: "Penelope Pooler and Deadpool"
+   
+**NOTES** 
+
+- Header text below shows format for two partners.
+
+- Also shows header text to create a Table of Contents (`toc`).
+
+
+```r
+---
+title: "HW 2"
+authors: "John Lennon and Paul McCartney"
+date: "Due 9/14/2022"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+---
+```
+]
+
+.panel[.panel-name[**First Steps: 4-5**]
+
+**`4.`** Modify the `setup` chunk 
+
+- `setup`chunk text below has ALL packages and setup options for **HW 2**
+
+   - Copy and paste text below into `setup` chunk of your HW 2 markdown (`.Rmd`) file.
+   
+&lt;br&gt;   
+   
+
+```r
+# this line specifies options for default options for all R Chunks
+knitr::opts_chunk$set(echo=T, highlight=T, scipen=100)
+
+# install helper package (pacman)
+# pacman loads and installs other packages, if needed
+if (!require("pacman")) install.packages("pacman", 
+                                         repos = "http://lib.stat.cmu.edu/R/CRAN/")
+
+# install and load required packages
+# pacman should be first package in parentheses and then list others
+pacman::p_load(pacman, tidyverse, gridExtra, magrittr)
+
+# verify packages (comment out in finished documents)
+p_loaded()
+```
+
+&lt;br&gt;
+
+**`5.`** Click the green triangle or type Ctrl/Cmd + Shift + Enter to run this setup chunk.
+
+]
+
+]
+
+
+---
+
+.panelset[
+
+.panel[.panel-name[**HW 2 - Part 1 - Notes**]
+
+
+.pull-left[
+
+#### Chunk 2: Examining the `diamonds` Data
+
+- This chunk reviews the `glimpse` and `unique` commands from Week 1.
+
+- `diamonds` is large dataset that is part of the `ggplot2` package in the tidyverse suite.
+
+- Provided code for HW 2 - Part 1 (Chunk 2) **will not run** until the `tidyverse` package suite is loaded in the `setup` chunk.
+
+- When you run the `glimpse()` command you will see the variable type *`&lt;ord&gt;`*, which is an **ordered factor variable**. 
+
+]
+
+.pull-right[
+
+![diamonds falling](docs_files/images/diamonds.png)
+
+]
+
+]
+
+
+.panel[.panel-name[**HW 2 - Part 1 - Steps to Follow**]
+
+**`1.`**  Run the R code in the provided R chunk for HW 2 - Part 1 (Chunk 2) which reviews:
+   
+- how to save a datset and examine it using `glimpse`
+   
+- how to examine the levels of a variable using `unique`
+
+- traditional and piped code to do the same task
+
+&lt;br&gt;
+
+
+**`2.`** Use the `unique` command with or without piping to examine the levels of:
+
+- the `cut` variable
+
+- the `clarity` variable
+
+- The new `unique` commands should be **ADDED** to Chunk 2
+
+&lt;br&gt;
+
+**`3.`** Answer Blackboard Questions 1 - 3
+
+
+]
+
+
+]
+
+
+---
+
+class: middle
+
+### Week 2 In-class Exercises (TP L4 - Q1)
+
+.pull-left[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+***TurningPoint Session ID: bua455s22***
+
+&lt;br&gt;
+
+**This is also BB Question 1 of HW 2**
+
+How many rows and columns are in the `diamonds` dataset that is saved as `my_diamonds` to your Global Environment?
+
+- `____` observations (rows)
+
+- `____` variables (columns)
+
+]
+
+.pull-right[
+
+![clever owl](docs_files/images/owl.png)
+
+]
+
+---
+
+class: middle
+
+### Week 2 In-class Exercises (TP L4 - Q1)
+
+.pull-left[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+***TurningPoint Session ID: bua455s22***
+
+&lt;br&gt;
+
+How many variables in the `my_diamonds` dataset are ordinal (ordered) factor variables? 
+
+&lt;br&gt;
+
+In the `glimpse(my_diamonds)` output these variables are labeled *`&lt;ord&gt;`*.
+
+]
+
+.pull-right[
+
+![clever owl](docs_files/images/owl.png)
+
+]
+
+---
+
+background-image: url("docs_files/images/tired_panda_faded.png")
+background-size: cover
+
+.pull-left[
+
+### **Key Points from Week 2**
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph2[
+
+**Building on R Project Skills:**
+
+- Creating and Managing R Projects
+
+- Creating, Editing, Rendering R Markdown Files
+
+- Documenting files in a `README.txt` file
+  
+**Data Management and Visualization:**
+
+- Review of
+  - `glimpse`, `unique`, `table`, `summary`
+  
+- Modifying day using `dplyr commands:
+  - `select`, `filter` `mutate`, `slice`
+  
+- Some Useful operators:
+  - `!`, `%in%`, `c()`, `is.na`
+  
+- Intro to plotting data with `ggplot`
+
+]
+
+]
+
+.pull-right[
+
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3[
+**You may submit an 'Engagement Question or Comment' about Week 2 lectures until Thursday, 9/8, at midnight on Blackboard.**
+]
+
+
+]
+
+]
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true,
+"keep_md": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -440,7 +440,7 @@ In both examples below, three variables of the `my_starwars` data are selected.
 # slice data to first 5 rows and last 5 rows
 (my_starwars_sliced &lt;- my_starwars |&gt;
   select(name, height, species) |&gt;
-  slice(1:5, 83:87))
+* slice(1:5, 83:87))
 ```
 
 ```
@@ -469,7 +469,7 @@ In both examples below, three variables of the `my_starwars` data are selected.
 # filter data to heights of 200 or more
 (my_starwars_tall &lt;- my_starwars |&gt; 
   select(name, height, species) |&gt;
-  filter(height &gt;= 200))
+* filter(height &gt;= 200))
 ```
 
 ```
@@ -506,7 +506,7 @@ In both examples below, three variables of the `my_starwars` data are selected.
 # useful for simple plots
 my_starwars_plt |&gt; 
   ggplot() +
-  geom_boxplot(aes(x=species, y=bmi))
+* geom_boxplot(aes(x=species, y=bmi))
 ```
 
 &lt;img src="docs_files/figure-html/unnamed-chunk-1-1.png" width="504" /&gt;
@@ -519,7 +519,7 @@ my_starwars_plt |&gt;
 ```r
 # useful for overlaying plot features
 my_starwars_plt |&gt; 
-  ggplot(aes(x=species, y=bmi)) +
+* ggplot(aes(x=species, y=bmi)) +
   geom_boxplot()
 ```
 
@@ -536,7 +536,7 @@ my_starwars_plt |&gt;
 
 
 ```r
-(sw_box1 &lt;- my_starwars_plt |&gt; 
+*(sw_box1 &lt;- my_starwars_plt |&gt;
   ggplot() +
 * geom_boxplot(aes(x=species, y=bmi)))
 ```

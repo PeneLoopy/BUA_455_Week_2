@@ -487,7 +487,7 @@ In both examples below, three variables of the `my_starwars` data are selected.
 # slice data to first 5 rows and last 5 rows
 (my_starwars_sliced <- my_starwars |>
   select(name, height, species) |>
-  slice(1:5, 83:87))                              #>>
+  slice(1:5, 83:87))                              #<<
 ```
 ]
 
@@ -499,7 +499,7 @@ In both examples below, three variables of the `my_starwars` data are selected.
 # filter data to heights of 200 or more
 (my_starwars_tall <- my_starwars |> 
   select(name, height, species) |>
-  filter(height >= 200))                          #>>
+  filter(height >= 200))                          #<<
 ```
 
 ]

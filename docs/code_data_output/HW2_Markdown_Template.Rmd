@@ -1,0 +1,199 @@
+---
+title: "HW 2 Template"
+author: "Fill Name in"
+date: "Due 9/14/2022"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+---
+
+### HW 2 - Part 1: **`glimpse`** and **`unique`**
+
+#### Chunk 2: Examining the **`diamonds`** Data
+
+- This chunk reviews the **`glimpse`** and **`unique`** commands from Week 1
+
+- You are encouraged to add your own notes here and/or your own comments in the chunk below so that you understand the code and what it does.
+
+```{r examining the diamonds data}
+
+# save the diamonds dataset to your Global Environment
+my_diamonds <- diamonds
+
+# show data summary
+# without piping
+glimpse(my_diamonds)
+
+# with piping
+my_diamonds |>
+  glimpse()
+
+# examine ordinal variables using unique
+# without piping
+unique(my_diamonds$cut)
+
+# with piping
+# pull command selects a single variable from a dataset
+my_diamonds |> pull(cut) |> unique()
+
+# choose one of these methods to examine:
+
+
+# ordered levels of clarity
+
+
+# ordered levels of color
+
+
+```
+
+---
+
+### HW2 - Part 2: **`select`**
+
+#### Chunk 3: Selecting variables in a dataset
+
+- This chunk demonstrates using the **`select`** command to select variables.
+
+- You are encouraged to add your own notes here and/or your own comments in the chunk below so that you understand the code and what it does.
+
+```{r selecting variables in a dataset}
+
+# creates a new dataset, my_diamonds1
+# selects variables we want to keep
+# select can also re-order variables (price is now first)
+my_diamonds1 <- my_diamonds |>
+  select(price, carat, cut, color, clarity, depth, table)
+
+# same command, but shorter
+# used : to specify consecutive variables
+my_diamonds1 <- my_diamonds |>
+  select(price, carat:table)
+
+# creates a new dataset, my_diamonds2
+# identical to above but we use ! to exclude variables
+my_diamonds2 <- my_diamonds |>
+  select(!c(x,y,z))
+
+# create my_diamonds3 using select to keep these variables only: 
+# price, carat, color, cut, clarity
+
+
+
+# create my_diamonds4 using select to EXCLUDE these variables 
+# depth, table, x, y, z
+
+
+
+```
+
+---
+
+### HW2 - Part 3: **`slice`**
+
+#### Chunk 4: Selecting rows by row number
+
+##### Editors: Author(s) who edited Chunk 4
+
+- This chunk demonstrates using the **`slice`** command to select rows.
+
+- You are encouraged to add your own notes here and/or your own comments in the chunk below so that you understand the code and what it does.
+
+```{r slicing data by row number}
+
+my_diamonds1 <- my_diamonds |>
+  select(price, carat, cut, color, clarity, depth, table) |>
+  slice(5001:35000)
+
+my_diamonds2 <- my_diamonds |>
+  select(price, carat:table) |>
+  slice(1, 200, 2301:3000, 29000:32000)
+
+# Use the code from Chunk 3  that you wrote to create my_diamonds3
+# add on to that code to limit my_diamonds3 to rows:
+# 1001 through 30000 and 45001 through 50000
+
+
+
+```
+
+---
+
+### HW 2 - Part 4: **`filter`** and **`summary`**
+
+#### Chunk 5: Filtering data by value and summarizing
+
+- This chunk demonstrates using the **`filter`** command to select rows by variables values and using **`summary`**
+
+- You are encouraged to add your own notes here and/or your own comments in the chunk below so that you understand the code and what it does.
+
+```{r filtering data by value and summarizing}
+
+# filtering my_diamonds1 to 
+# carat weight greater than or equal to 2 (carat >=2)
+# cut is Premium or Ideal (cut %in% c("Premium", "Ideal"))
+my_diamonds1 <- my_diamonds |>
+  select(price, carat:table) |>
+  slice(5001:35000) |>
+  filter(carat >= 2) |>
+  filter(cut %in% c("Premium", "Ideal"))
+
+# same filtering tasks as above
+# !cut used to exclude cuts Fair, Good, Very Good
+my_diamonds1 <- my_diamonds |>
+  select(price, carat:table) |>
+  slice(5001:35000) |>
+  filter(carat >= 2) |>
+  filter(!cut %in% c("Fair", "Good", "Very Good"))
+
+# same filtering tasks as above
+# both filtering tasks combined using and operator &
+my_diamonds1 <- my_diamonds |>
+  select(price, carat:table) |>
+  slice(5001:35000) |>
+  filter(carat >= 2 & cut %in% c("Premium", "Ideal")) 
+
+# summary of color in my_diamonds1
+summary(my_diamonds1$color)
+
+# same summary with piping
+my_diamonds1 |> pull(color) |> summary()
+
+# Use any one of the examples above to filter my_diamonds3 to:
+# carat weight greater than or equal to 1.25
+# cut is Very Good, Premium, or Ideal 
+
+
+# summarize clarity in the my_diamonds3 dataset (number of obs. in each level)
+# use the summary command, with or without piping
+# above I show how I summarized the color variable
+
+
+```
+
+---
+
+
+### HW 2 - Part 5: Creating plots with **`ggplot`**
+
+#### Creating Basic Plots
+
+- In Part 5, you will create a chunk (Ctrl/Cmd + Alt + i) and copy the R code for Part 5 from **HW2_Instructions.html** into the chunk you create.
+
+- The provided R code demonstrates using 
+
+   - **`ggplot`** to make some basic plots
+  
+   -  **`grid.arrange`** to present multiple plots in a grid or column.
+  
+- You are encouraged to add your own notes here and/or your own comments in the chunk you create so that you understand the code and what it does.
+

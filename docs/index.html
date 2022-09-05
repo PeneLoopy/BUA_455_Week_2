@@ -4,7 +4,6 @@
     <title>BUA 455 - Week 2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Penelope Pooler Eisenbies" />
-    <meta name="date" content="2022-05-25" />
     <script src="docs_files/header-attrs/header-attrs.js"></script>
     <link href="docs_files/panelset/panelset.css" rel="stylesheet" />
     <script src="docs_files/panelset/panelset.js"></script>
@@ -49,7 +48,7 @@ class: bottom, right
 
 #### Penelope Pooler Eisenbies
 
-#### 2022-05-25
+#### September 6th and 8th, 2022
 
 [Wikipedia Sloth Page](https://en.wikipedia.org/wiki/Sloth)
 
@@ -59,7 +58,7 @@ class: bottom, right
 
 .pull-left[
 
-- Few simple options can greatly help you.
+- A few simple options can greatly help you.
 
 - Workspace:
 
@@ -112,6 +111,14 @@ class: bottom, right
 .pull-right[
 
 ![RStudio Global Options menu](docs_files/images/RStudio_appearance.png)
+
+
+
+
+
+
+
+
 
 ]
 
@@ -166,15 +173,23 @@ Textbook: A [list of useful sections can be found here](https://docs.Google.com/
 
 - Using the `c()` operator to create a group of values
 
-- Using `$` to specify a variable within a dataset
+- Using `$` or `pull` or `select` to specify a variable within a dataset
 
-- Using `%in%` to specify a group for values
+
 
 ---
 
 ### Additional R syntax
 
-- [Operators in R](https://www.statmethods.net/management/operators.html)
+**Operators** are used to filter data or create new variables
+
+For example 
+
+- Filter a dataset of heights to heights &lt;= 6 feet
+
+- Filter a dataset of cars to exclude SUVs
+
+**[Operators in R](https://www.statmethods.net/management/operators.html)** is a good reference for some of the common operators used for data management in R.
 
 
 ### Week 2 In-class Exercises (TP L3 - Q1)
@@ -189,7 +204,7 @@ This same operator can be put before any value, e.g., **`X`**, to indicate **not
 
 ### Introduction to `dplyr`
 
-Recall the `starwars` data from Week 1
+Recall the `starwars` data from Week 1 [Online dataset documentation](https://dplyr.tidyverse.org/reference/starwars.html)
 
 
 
@@ -322,7 +337,7 @@ my_starwars_plt &lt;- my_starwars |&gt;
 # filter the data to include only two levels (categories) of species, Human and Droid
 my_starwars_plt &lt;- my_starwars |&gt;
   select(species, sex, height, mass) |&gt;
-* filter(species %in% c("Human", "Droid")) |&gt; # filter command
+* filter(species %in% c("Human", "Droid")) |&gt;    # filter command
   glimpse(width=60)
 ```
 
@@ -370,9 +385,9 @@ my_starwars_plt &lt;- my_starwars |&gt;
 
 .panel[.panel-name[**Remove `NA`s**]
 
-- A common task in Data Management is removing missing values.
+- A common task in data management is removing missing values.
 
-- In R these are denoted as `NA`
+- In R, missing values are denoted as `NA`
 
 - Missing values can be filtered out using `filter`, the command `is.na`, and the operator `!`.
 
@@ -490,6 +505,36 @@ In both examples below, three variables of the `my_starwars` data are selected.
 ```
 
 ]
+
+---
+
+### Why do we do these data management tasks?
+
+- Filtering data to a subset by value
+
+- Slicing data by row number
+
+- Selecting variables
+
+- Removing missing values
+
+- Creating new variables 
+
+These are all the most common tasks that are done to raw data to make it **usable**.
+
+**Usable** data can communicate information:
+
+- Can be summarized in a table for presentation
+- Can be visualized in a plot
+- Can be analyzed using statistical models 
+- Can be presented or published
+
+&lt;br&gt;
+
+In the next demonstration:
+
+We examine how these managed data are **USED** to create a simple plot that is then formatted for presentation.
+
 
 
 
@@ -614,9 +659,10 @@ my_starwars_plt &lt;- my_starwars_plt |&gt;
 
 ---
 
-### Showing Plots in A Grid
+### Showing Plots in A 2x2 Grid
 
-Final plot  is simplified for showing in the 2x2 grid
+- Another common presentation task is to show a grid, row, or column of plots.
+- Final plot  is simplified for showing in the 2x2 grid
 
 
 
@@ -645,28 +691,26 @@ Final plot  is simplified for showing in the 2x2 grid
 .pull-left[
 **Method 1:**
 
-i. Right click on plot on right
-ii. Select 'Save image as...'
-iii. Save imagr as .png file (or other preference)
+1. Right click on plot on right
+2. Select 'Save image as...'
+3. Save image as .png file (or other preference)
 
 ***Notes***
 
 - This method is very quick and is great for saving one plot at a time.
-
 - Ideally work should be saved to your `code_data_output` folder.
 
 **Method 2:**
-
  Use `png` (or similar) command(s):
  
 - Other file formats include `.jpg, .tif, .exp`
 
 
 ```r
-# export plot as png file using png command
+# export plot as .png file using png command
 png("StarWars_BMI_Boxplot.png") # file name
-sw_box4   # name of R plot               
-dev.off() # ends export
+sw_box4                         # name of R plot               
+dev.off()                       # ends export
 ```
 
 ]
@@ -695,13 +739,13 @@ dev.off() # ends export
 
 - BUA 455 will use one README file format
 
-   - [Empty README file template]()
+   - [Empty README file template](https://drive.google.com/file/d/1RlJkuJWRsaqy7KWo718bNTl570T8n_hi/view?usp=sharing)
 
-   - [Completed README file for Week 2 lectures]()
+   - [Completed README file for Week 2 lectures](https://drive.google.com/file/d/1Q_vzUumn_ojAjNoATedtu4J78_fILwPs/view?usp=sharing)
 
 **Editing a README.txt file**
 
-  - in RStudio: File &gt; Open File &gt; click on file
+  - in **RStudio:** File &gt; Open File &gt; click on file
   
   - in ***Notepad*** (Windows OS) or ***TextEdit*** (Mac OS)
 
@@ -750,23 +794,21 @@ The name of this package suite is `____`.
 .pull-left[
 **In class we will work through HW 2 Instructions**
 
-Students are required to ***work with a partner*** at least once (HW 2, HW 3, or HW 4).
+Students are encouraged but not required to ***work with a partner*** at least once for HW2, HW 3, or HW 4).
 
-   - Both partners are responsible for understanding all coding 
+   - All students are responsible for understanding **all** coding 
    
    - Working with a partner at least once will help during group project.
    
 **My Recommendation for Easy Collaboration:**
 
-  - Create two copies of the R project, one for each partner
+  - Each student should make their own R project and internal `code_data_output` folder for HW 2.
   
-  - Email or share .Rmd file only
+  - Email or share .Rmd file in a cloud drive
   
-** GitHub is used for Collaboration and Version Control**
+**GitHub** is used for collaboration and version control in more advanced courses and other disciplines.
 
   - Not required in this course
-  
-  - Will discuss and possibly demo after Quiz 2
 
 ]
 
@@ -784,11 +826,7 @@ Students are required to ***work with a partner*** at least once (HW 2, HW 3, or
 
 .pull-left[
 
-[HW Assignment 2]() will give you experience with:
-
-- Sharing an R project with a partner (if you choose)
-
-   - Only required once for HW 2, HW 3 , or HW 4
+[HW Assignment 2](https://drive.google.com/file/d/1W8jKN94FxfLUQ9SpCaqGF83X2vp_WKEW/view?usp=sharing) will give you experience with:
 
 - Creating an R Project Directory and a code_data_output folder (Review)
 
@@ -800,9 +838,13 @@ Students are required to ***work with a partner*** at least once (HW 2, HW 3, or
 
 - Working with a larger dataset
 
-- Using the `dplyr` package to `select` variables and `slice` and `filter` data
+- Using the **`dplyr`** package to **`select`** variables and **`slice`** and **`filter`** data
 
 - Creating a basic plot with minimal formatting
+
+You are also encouraged to work with someone on HW 2, HW 3, or HW 4.
+
+  - Practice sharing files with a partner.
 
 ]
 
@@ -818,52 +860,43 @@ Students are required to ***work with a partner*** at least once (HW 2, HW 3, or
 
 ]
 
-.panel[.panel-name[**First Steps: 0-2**]
+.panel[.panel-name[**First Steps: 0 - 3**]
 
-**`0.`** If you want to work with a partner on HW 2:
+#### HW 2 - First Steps
 
-- BEFORE you begin in R: 
-    
-   - Choose your partner
-     
-   - discuss how you will share `.Rmd` files (email or shared drive)
+**`0.`** You are encouraged to work with others and and experiment with sharing code (.Rmd files), but each student should create their own project and .Rmd file to submit.
+
+**`1.`** Create an R project named **`HW 1 &lt;first name&gt; &lt;last name&gt;`**
    
-**`1.`** Each student will create a new R project.
+**`2.`** Create a folder in your R project labeled **`code_data_output`**.
 
-- Project Name:
-
-   - If working with partner: 'HW 2 LastName1 LastName2'.
-   
-   - If working solo: 'HW2 FirstName LastName
-   
-**`2.`** Create a folder in your R project labeled `code_data_output`.
+**`3.`** Download the provided file, **[`HW2_Template.Rmd`]()** 
 
 ]
 
-.panel[.panel-name[**First Steps: 3**]
-  
-**`3.`** Download the provided file, [`HW2_Template.Rmd`]()
+.panel[.panel-name[**First Steps: 4**]
 
-- Save it to your code_data_output folder
+#### HW 2 - First Steps Continued
+  
+**`4.`** Save the downloaded **`HW2_Template.Rmd`** file to your code_data_output folder
+
+- Change file name to be **`HW2_FirstName_LastName.Rmd`**
+
+  - For example, I would change the template file to be named **`HW2_Penelope_Pooler.Rmd`**
    
-- Change title to be 'HW 2'
+- Change title in the file header to be 'HW 2'
    
-- Specify all authors 
-   
-   - 1 Person: "Penelope Pooler"
-   - 2 Partners: "Penelope Pooler and Deadpool"
+- Specify yourself as the author
    
 **NOTES** 
 
-- Header text below shows format for two partners.
-
-- Also shows header text to create a Table of Contents (`toc`).
-
-
-```r
+- Provided header text below shows the correct format.
+- This header text also creates a floating Table of Contents (toc).
+   
+```
 ---
 title: "HW 2"
-authors: "John Lennon and Paul McCartney"
+authors: "Penelope Pooler"
 date: "Due 9/14/2022"
 output: 
   html_document:
@@ -871,28 +904,33 @@ output:
     toc_depth: 4
     toc_float: true
 ---
+
 ```
 ]
 
-.panel[.panel-name[**First Steps: 4-5**]
+.panel[.panel-name[**First Steps: 5 - 6**]
 
-**`4.`** Modify the `setup` chunk 
+#### HW 2 - First Steps Continued
 
-- `setup`chunk text below has ALL packages and setup options for **HW 2**
+**`5.`** Modify the **`setup`** chunk 
 
-   - Copy and paste text below into `setup` chunk of your HW 2 markdown (`.Rmd`) file.
+- The **`setup`** chunk text shown below has packages and setup options for HW 2.
+
+- Copy and paste text into the setup chunk of your HW 2 Markdown (**`.Rmd`**) file that you created from the provided template.
    
-&lt;br&gt;   
+&lt;br&gt;
+   
    
 
 ```r
 # this line specifies options for default options for all R Chunks
-knitr::opts_chunk$set(echo=T, highlight=T, scipen=100)
+knitr::opts_chunk$set(echo=T, highlight=T)
 
-# install helper package (pacman)
-# pacman loads and installs other packages, if needed
-if (!require("pacman")) install.packages("pacman", 
-                                         repos = "http://lib.stat.cmu.edu/R/CRAN/")
+# suppress scientific notation
+options(scipen=100)
+
+# install helper package (pacman) if needed
+if (!require("pacman")) install.packages("pacman", repos = "http://lib.stat.cmu.edu/R/CRAN/")
 
 # install and load required packages
 # pacman should be first package in parentheses and then list others
@@ -904,7 +942,7 @@ p_loaded()
 
 &lt;br&gt;
 
-**`5.`** Click the green triangle or type Ctrl/Cmd + Shift + Enter to run this setup chunk.
+**`6.`** Click the green triangle or type Ctrl/Cmd + Shift + Enter to run this setup chunk.
 
 ]
 
@@ -922,13 +960,13 @@ p_loaded()
 
 #### Chunk 2: Examining the `diamonds` Data
 
-- This chunk reviews the `glimpse` and `unique` commands from Week 1.
+- This chunk reviews the **`glimpse`** and **`unique`** commands from Week 1.
 
-- `diamonds` is large dataset that is part of the `ggplot2` package in the tidyverse suite.
+- **`diamonds`** is large dataset that is part of the **`ggplot2`** package in the tidyverse suite.
 
-- Provided code for HW 2 - Part 1 (Chunk 2) **will not run** until the `tidyverse` package suite is loaded in the `setup` chunk.
+- Provided code for HW 2 - Part 1 (Chunk 2) **will not run** until the **`tidyverse`** package suite is loaded in the **`setup`** chunk.
 
-- When you run the `glimpse()` command you will see the variable type *`&lt;ord&gt;`*, which is an **ordered factor variable**. 
+- When you run the **`glimpse()`** command you will see the variable type ***`&lt;ord&gt;`***, which is an **ordered factor variable**. 
 
 ]
 
@@ -943,32 +981,63 @@ p_loaded()
 
 .panel[.panel-name[**HW 2 - Part 1 - Steps to Follow**]
 
-**`1.`**  Run the R code in the provided R chunk for HW 2 - Part 1 (Chunk 2) which reviews:
+**`1.`** Run the R code in the provided R chunk  for HW 2 - Part 1 (Chunk 2) which reviews:
    
-- how to save a datset and examine it using `glimpse`
+- how to save a dataset and examine it using **`glimpse`**
    
-- how to examine the levels of a variable using `unique`
+- how to examine the levels of a variable using **`unique`**
 
 - traditional and piped code to do the same task
 
 &lt;br&gt;
 
 
-**`2.`** Use the `unique` command with or without piping to examine the levels of:
+**`2.`** Use the **`unique`** command with or without piping to examine the levels of:
 
-- the `cut` variable
+- the **`clarity`** variable
 
-- the `clarity` variable
+- the **`color`** variable
 
-- The new `unique` commands should be **ADDED** to Chunk 2
+- The new **`unique`** commands that you write should be **ADDED** to Chunk 2.
 
 &lt;br&gt;
 
-**`3.`** Answer Blackboard Questions 1 - 3
+**`3.`** Answer Blackboard Questions 1 - 3.
 
 
 ]
 
+.panel[.panel-name[**HW 2 - Part 1 - Provided R Code**]
+
+
+```r
+# save the diamonds dataset to your Global Environment
+my_diamonds &lt;- diamonds
+
+# show data summary
+# without piping
+glimpse(my_diamonds)
+
+# with piping
+my_diamonds |&gt; glimpse()
+
+# examine ordinal variables using unique
+# without piping
+unique(my_diamonds$cut)
+
+# with piping
+# pull command selects a single variable from a dataset
+my_diamonds |&gt; pull(cut) |&gt; unique()
+
+# choose one of these methods to examine:
+
+# ordered levels of clarity
+
+# ordered levels of color
+```
+
+
+]
 
 ]
 
@@ -1009,7 +1078,7 @@ How many rows and columns are in the `diamonds` dataset that is saved as `my_dia
 
 class: middle
 
-### Week 2 In-class Exercises (TP L4 - Q1)
+### Week 2 In-class Exercises (TP L4 - Q2)
 
 .pull-left[
 
@@ -1025,7 +1094,7 @@ How many variables in the `my_diamonds` dataset are ordinal (ordered) factor var
 
 &lt;br&gt;
 
-In the `glimpse(my_diamonds)` output these variables are labeled *`&lt;ord&gt;`*.
+- In the `glimpse(my_diamonds)` output, these variables are labeled *`&lt;ord&gt;`*.
 
 ]
 
@@ -1034,6 +1103,446 @@ In the `glimpse(my_diamonds)` output these variables are labeled *`&lt;ord&gt;`*
 ![clever owl](docs_files/images/owl.png)
 
 ]
+
+---
+
+.panelset[
+
+.panel[.panel-name[**HW 2 - Part 2 - Notes**]
+
+.pull-left[
+
+#### Chunk 3: Selecting variables in a dataset
+
+- This chunk demonstrates using the **`select`** command to select variables in a dataset.
+
+- In the provided code for HW 2 - Part 2 (Chunk 3),there are **three code examples** that select the first 7 variables in the my_diamonds dataset and save them as a new data set.
+
+  - **`my_diamonds1`** is created by specifying variables to **INCLUDE**
+  
+  - **`my_diamonds2`** is created by specifying variables to **EXCLUDE**
+  
+  - **`select`** is ALSO used to reorder the variables (**`price`** is first)
+
+]
+
+.pull-right[
+
+![diamonds falling](docs_files/images/diamonds.png)
+
+]
+
+]
+
+
+.panel[.panel-name[**HW 2 - Part 2 - Steps to Follow**]
+
+**`1.`** Create **`my_diamonds3`** using the select command to only **INCLUDE** the first **FIVE** variables: 
+
+- **price, carat, cut, color, clarity**
+
+&lt;br&gt;
+
+**`2.`** Create my_diamonds4 which will be identical to my_diamonds3, but is created by **EXCLUDING** the last FIVE variables using the **`!`** operator and the **`c(...)`** operator to group the variables: 
+
+- **depth, table, x, y, z**
+
+]
+
+.panel[.panel-name[**HW 2 - Part 2 - Provided R Code**]
+
+```r
+# creates a new dataset, my_diamonds1
+# selects variables we want to keep
+# select can also re-order variables (price is now first)
+my_diamonds1 &lt;- my_diamonds |&gt;
+  select(price, carat, cut, color, clarity, depth, table)
+
+# same command, but shorter
+# used : to specify consecutive variables
+my_diamonds1 &lt;- my_diamonds |&gt;
+  select(price, carat:table)
+
+# creates a new dataset, my_diamonds2
+# identical to above but we use ! to exclude variables
+my_diamonds2 &lt;- my_diamonds |&gt;
+  select(!c(x,y,z))
+
+# create my_diamonds3 using select to keep these variables only: 
+# price, carat, color, cut, clarity
+
+# create my_diamonds4 using select to EXCLUDE these variables 
+# depth, table, x, y, z
+```
+
+]
+
+]
+
+---
+
+.panelset[
+
+.panel[.panel-name[**HW 2 - Part 3 - Notes**]
+
+.pull-left[
+
+#### Chunk 4: Selecting rows by row number
+
+- This chunk demonstrates using the **`slice`** command to select observations (rows).
+
+- In the provided code for HW 2 - Part 3 (Chunk 4), and subsequent chunks you will continue to build on your code from Part 2 (Chunk 3) with more commands.
+
+- Using piping in your code makes this process more efficient.
+
+]
+
+.pull-right[
+
+![diamonds falling](docs_files/images/diamonds.png)
+
+]
+
+]
+
+
+.panel[.panel-name[**HW 2 - Part 3 - Steps to Follow**]
+
+**`1.`** Copy and the code you wrote to create **`my_diamonds3`** in Chunk 3 and paste this code into Chunk 4.
+
+**`2.`** Use the examples to add on to your code and select rows:
+1001 through 30000 and 45001 through 50000
+
+- This dataset should still be named **`my_diamonds3`**
+
+- Piping will make your coding more efficient and easier to read.
+
+&lt;br&gt;
+   
+**`3.`** Answer the following Blackboard Question to verify that your dataset is correct:
+
+&lt;br&gt;
+   
+**`3.`** Answer Blackboard Question 4 to verify that your dataset is correct.
+
+]
+
+.panel[.panel-name[**HW 2 - Part 3 - Provided R Code**]
+
+
+```r
+my_diamonds1 &lt;- my_diamonds |&gt;
+  select(price, carat, cut, color, clarity, depth, table) |&gt;
+  slice(5001:35000)
+
+my_diamonds2 &lt;- my_diamonds |&gt;
+  select(price, carat:table) |&gt;
+  slice(1, 200, 2301:3000, 29000:32000)
+
+# Use the code from Chunk 3  that you wrote to create my_diamonds3
+# add on to that code to limit my_diamonds3 to rows:
+# 1001 through 30000 and 45001 through 50000
+```
+
+]
+
+]
+
+---
+
+.panelset[
+
+.panel[.panel-name[**HW 2 - Part 4 - Notes**]
+
+.pull-left[
+
+#### Chunk 5: Filtering data by value and summarizing
+
+- This chunk demonstrates 
+
+   - using the **`filter`** command to select rows by variables values
+   
+   - using the **`summary`** command
+
+- The **`filter`** command enables us to select observations by one or more values of one or more variables.
+
+- You can use multiple consecutive **`filter`** commands or you can use the **and** operator, **`&amp;`**, or the **or** operator, **`|`**.
+
+- You can use filter to **INCLUDE** rows or **EXCLUDE** rows with **`!`**.
+
+- The provided code includes multiple examples of how to complete the same two filtering tasks.
+
+]
+
+.pull-right[
+
+![diamonds falling](docs_files/images/diamonds.png)
+
+]
+
+]
+
+
+.panel[.panel-name[**HW 2 - Part 4 - Steps to Follow**]
+
+**`1.`** Copy the code you wrote in Chunk 4 and then paste it into Chunk 5.
+
+**`2.`** Add the specified slice command  to subset the **`my_diamonds3`** dataset in Chunk 5.
+
+**`3.`**. Use one of the examples in the provided R code for Chunk 5 to complete these **TWO** specified filter tasks:
+
+- filter **`my_diamonds3`** to diamonds weighing 1.5 or more carats
+
+- filter **`my_diamonds3`** to these categories: **Very Good, Premium, Ideal**
+
+&lt;br&gt;
+   
+**`3.`** Use the example **`summary`** command code to summarize the factor variable **`clarity`** in the final **`my_diamonds3`** dataset.
+
+**`4.`** Answer Blackboard Questions 5 and 6 to verify that you have completed these steps correctly.
+
+]
+
+.panel[.panel-name[** R Code - Part 1**]
+
+
+```r
+# filtering my_diamonds1 to 
+# carat weight greater than or equal to 2 (carat &gt;=2)
+# cut is Premium or Ideal (cut %in% c("Premium", "Ideal"))
+my_diamonds1 &lt;- my_diamonds |&gt;
+  select(price, carat:table) |&gt;
+  slice(5001:35000) |&gt;
+  filter(carat &gt;= 2) |&gt;
+  filter(cut %in% c("Premium", "Ideal"))
+
+# same filtering tasks as above
+# !cut used to exclude cuts Fair, Good, Very Good
+my_diamonds1 &lt;- my_diamonds |&gt;
+  select(price, carat:table) |&gt;
+  slice(5001:35000) |&gt;
+  filter(carat &gt;= 2) |&gt;
+  filter(!cut %in% c("Fair", "Good", "Very Good"))
+
+# same filtering tasks as above
+# both filtering tasks combined using and operator &amp;
+my_diamonds1 &lt;- my_diamonds |&gt;
+  select(price, carat:table) |&gt;
+  slice(5001:35000) |&gt;
+  filter(carat &gt;= 2 &amp; cut %in% c("Premium", "Ideal")) 
+```
+
+]
+
+.panel[.panel-name[**R Code - Part 2**]
+
+
+```r
+# summary of color in my_diamonds1
+summary(my_diamonds1$color)
+
+# same summary with piping
+my_diamonds1 |&gt; pull(color) |&gt; summary()
+
+# Use any one of the examples above to filter my_diamonds3 to:
+# carat weight greater than or equal to 1.25
+# cut is Very Good, Premium, or Ideal 
+
+
+# summarize clarity in the my_diamonds3 dataset (number of obs. in each level)
+# use the summary command, with or without piping
+# above I show how I summarized the color variable
+```
+
+]
+
+]
+
+---
+
+.panelset[
+
+.panel[.panel-name[**HW 2 - Part 5 - Notes**]
+
+.pull-left[
+
+#### Chunk 6: Creating Basic Plots
+
+- The provided R code demonstrates using 
+  
+   - **`ggplot`** to make some basic plots
+  
+   - **`grid.arrange`** to present multiple plots in a grid or column.
+
+&lt;br&gt;
+
+- In Part 5, you will create a chunk and copy the provided R code into the chunk you create.
+
+]
+
+.pull-right[
+
+![diamonds falling](docs_files/images/diamonds.png)
+
+]
+
+]
+
+
+.panel[.panel-name[**Part 5 - Steps 1 - 4**]
+#### Steps to Follow
+
+**`1.`** Create a new chunk (Chunk 6) under the **HW 2 - Part 5** heading in your HW 2 Markdown file.
+
+- Name this new chunk **`creating plots with ggplot`**
+
+&lt;br&gt;
+   
+**`2.`** Copy and paste the provided R code below into the chunk you created.
+
+**`3.`** Use the example scatter plot code below to create a saved plot named **`scatter_cut`**.
+
+- This will be similar to the code for the **`scatter_clarity`** scatter plot.
+
+- Remove **`#`** at the beginning of this line **`# scatter_cut &lt;-`** to start code.
+
+- Replace **`color=clarity`** with **`color=cut`**.
+
+&lt;br&gt;
+
+**`4.`** Use the example code provided below to create a saved plot named **`scatter_color`**.
+
+- This will be similar to the code for the **`scatter_clarity`** scatter plot.
+
+- Remove **`#`** at the beginning of this line **`# scatter_color &lt;-`** to start code.
+
+- Replace **`color=clarity`** with **`color=color`**.
+
+]
+
+.panel[.panel-name[**Part 5 - Steps 5 - 8**]
+#### Steps to Follow continued
+**`5.`** Use the provided **`grid.arrange`** command to create a 2x2 grid of all four scatter plots.
+   
+- Remove **`#`** at the beginning of the line with **`grid.arrange(..., ncol=2)`**
+
+- This code will only work if you use the provided names to save your scatterplots.
+
+&lt;br&gt;
+   
+**`6.`** Use the provided example boxplot code below to create a saved plot named **`box_clarity`**
+ 
+- This will be similar to the provided code for the side-by-side grouped boxplot, **`box_color`**.
+
+&lt;br&gt;
+   
+**`7.`** Use the provided **`grid.arrange`** command to create a stacked column of the two boxplot figures.
+   
+- Remove **`#`** at the beginning of the line with **`grid.arrange(..., ncol=1)`**
+
+- This code will only work if you use the provided name to save your new boxplot figure.
+
+&lt;br&gt;
+
+**`8.`** Answer Blackboard Questions 7 and 8 based on the plots you create.
+
+]
+
+.panel[.panel-name[**Scatter Plots R code**]
+
+```r
+# scatter_none is the most basic scatter plot of carat vs. price 
+# no other variables are included
+# to view this plot by itself (not required), enclose code in parentheses
+scatter_none &lt;- my_diamonds |&gt;
+   ggplot() +
+   geom_point(aes(x=carat, y=price))
+
+# scatter_clarity adds the option color=clarity to the aes (aesthetic)
+# observations are color coded by diamond clarity level
+# theme_classic() added to remove background
+scatter_clarity &lt;- my_diamonds |&gt;
+  ggplot() +
+  geom_point(aes(x=carat, y=price, color=clarity)) +
+  theme_classic()
+
+# create plot named scatter_cut using the above code
+# change color=clarity to color=cut
+# scatter_cut &lt;- 
+
+# create plot named scatter_color using the above code
+# change color=clarity to color=color
+# scatter_color &lt;- 
+
+# plot all 4 plots above in a 2x2 grid and answer Blackboard Questions
+# grid.arrange(scatter_none, scatter_clarity, 
+#              scatter_color, scatter_cut, ncol=2)
+```
+
+]
+
+.panel[.panel-name[**Boxplots R code**]
+
+
+```r
+# below is a plot of grouped side-by_side boxplots 
+# Within each cut category there is a separate boxplot for each color
+# this is one good way to examine categorical data
+
+# code is enclosed in parentheses 
+# plot is saved as box_color AND is shown on the screen
+(box_color &lt;- my_diamonds3 |&gt;
+  ggplot() +
+  geom_boxplot(aes(x=cut, y=price, fill=color))+ 
+  theme_classic())
+
+
+# create a plot of grouped side-by_side boxplots that show
+# boxplots for each clarity category with each cut category
+
+# same plot as above but change fill=color to fill=clarity
+
+# name this plot box_clarity
+# (box_clarity &lt;- )
+
+
+# plot these two sets of plots in a stacked column (nrow=1)
+# grid.arrange(box_color, box_clarity, ncol=1)
+```
+
+
+]
+
+]
+
+---
+
+### HW 2 - Final Steps
+
+**Reminder:** You are welcome and encouraged to work together and practice sharing Markdown (`Rmd`) files, but each student should submit their own zipped R project and Blackboard assignment.
+
+**`1.`** Save your completed HW 2 R Markdown File (.Rmd) to your code_data_output folder
+
+**`2.`** Knit your R markdown File.
+
+**`3.`** Answer all 8 Blackboard questions associated with this assignment.
+
+**`4.`** Create a README file for HW 2 using the [empty README template](https://drive.google.com/file/d/1RlJkuJWRsaqy7KWo718bNTl570T8n_hi/view?usp=sharing) provided with the HW 2 files.
+
+**`5.`** Zip your entire Project Directory into a compressed File and submit it.
+
+- The zipped project directory should contain:
+
+   - The `code_data_output` folder with 2 files in it:
+   
+      - the completed Markdown file (`.Rmd`) 
+      - the knitted (rendered) HTML file (`.html`)
+      
+   - In addition to the `code_data_output` folder, the outer project folder should ALSO include
+      
+      - The complete `README.txt` file saved with name of project, (e.g. `HW 2 Penelope Pooler README.txt`) 
+      - The .Rproj file
+
 
 ---
 
@@ -1081,7 +1590,6 @@ background-size: cover
 
 ]
 
-]
 
 
 

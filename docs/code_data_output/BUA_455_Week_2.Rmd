@@ -582,7 +582,7 @@ Students are encouraged but not required to ***work with a partner*** at least o
 
 ### HW 2 Purpose
 
-[HW Assignment 2]() will give you experience with:
+[HW Assignment 2]((https://blackboard.syracuse.edu/bbcswebdav/pid-8358216-dt-content-rid-95103694_1/xid-95103694_1) will give you experience with:
 
 - Creating an R Project Directory and a code_data_output folder (Review)
 
@@ -1132,7 +1132,7 @@ scatter_clarity <- my_diamonds |>
 
 **`3.`** Answer all 8 Blackboard questions associated with this assignment.
 
-**`4.`** Create a README file for HW 2 using the [empty README template]() provided with the HW 2 files.
+**`4.`** Create a README file for HW 2 using the [empty README template](https://drive.google.com/file/d/1RlJkuJWRsaqy7KWo718bNTl570T8n_hi/view?usp=sharing) provided with the HW 2 files.
 
 **`5.`** Zip your entire Project Directory into a compressed File and submit it.
 
@@ -1180,8 +1180,5 @@ scatter_clarity <- my_diamonds |>
 
 **You may submit an 'Engagement Question or Comment' about Week 2 lectures until Thursday, 9/8, at midnight on Blackboard.**
 
-
-
-]
 
 

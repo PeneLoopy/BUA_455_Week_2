@@ -77,13 +77,42 @@ p_loaded()
 
 ---
 
+### R Markdown Options
+
+- Changing R Markdown options will make it easier to navigate your work
+
+- On a Mac go to:
+
+   - RStudio > Preferences > R Markdown
+  
+- On a Windows OS go to:
+
+   - Tools > Global Options > R Markdown
+   
+- The main option that many students find helpful:
+
+  - **Show in document outline: Sections and Named Chunks**
+
+- NOTE: R Notebooks are a paired down version of R Markdown
+
+  - Useful for work that will not be presented.
+   
+![R Markdown Global Options](docs_files/images/rmarkdown_options.png)
+
+
+---
+
 ### Reminders:
 
-#### Pre-class Survey Due Wed. 9/7
+#### Pre-class Survey Due Wed. 1/25
 
-#### HW 1 (Parts 1, 2, and 3) Due 9/7
+#### HW 1 (Parts 1, 2, and 3) Due 1/25
 
-Textbook: A [list of useful sections can be found here](https://docs.Google.com/spreadsheets/d/1yhUSJAJQ4VVjVBpiv3_C2D3tQs2SmJjynSq9chqXOwc/edit?usp=sharing) and will be updated as the course progresses.
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
+
+Textbook: A [list of useful sections can be found here](https://docs.Google.com/spreadsheets/d/1yhUSJAJQ4VVjVBpiv3_C2D3tQs2SmJjynSq9chqXOwc/edit?usp=sharing) 
+
+]
 
 ---
 
@@ -140,9 +169,9 @@ For example
 **[Operators in R](https://www.statmethods.net/management/operators.html)** is a good reference for some of the common operators used for data management in R.
 
 
-### Week 2 In-class Exercises (TP L3 - Q1)
+### Week 2 In-class Exercises (L3 - Q1)
 
-***TurningPoint Session ID: bua455s22***
+***Session ID: bua455s23***
 
 Use the **Operators in R** reference link above to find the operator that is put before **`=`** to indicate **not equal to**.
 
@@ -215,7 +244,7 @@ my_starwars_plt <- my_starwars |>
 
 - Use the `select` command in the `dplyr` package to select variables.
 
-- The `select` command also orders the variables as as written in the command.
+- The `select` command also orders the variables as written in the command.
 
 - We save this dataset with fewer variables as a **NEW** dataset, `my_starwars_plt`.
 
@@ -298,17 +327,15 @@ my_starwars_plt <- my_starwars |>
 
 ---
 
-class: middle
+### Week 2 In-class Exercises (L3 - Q2)
 
-### Week 2 In-class Exercises (TP L3 - Q2)
-
-***TurningPoint Session ID: bua455s22***
+***Session ID: bua455s23***
 
 The select command is used to select `___` and can be used to `___` them.
 
 ---
 
-### **`slice`** and More about **`filter`**
+### **`slice`** and more about **`filter`**
 
 In both examples below, three variables of the `my_starwars` data are selected.
 
@@ -528,9 +555,9 @@ dev.off()                       # ends export
 
 - BUA 455 will use one README file format
 
-   - [Empty README file template]()
+   - [Empty README file template](https://drive.google.com/file/d/1lsqpffL5b5XsTSrV7VKfWeYIDxoH1PZS/view?usp=sharing)
 
-   - [Completed README file for Week 2 lectures]()
+   - [Completed README file for Week 2 lectures](https://drive.google.com/file/d/1lu5Z4IQPLMSJSUSqevskrIQGmi0rQJkZ/view?usp=sharing)
 
 **Editing a README.txt file**
 
@@ -540,17 +567,17 @@ dev.off()                       # ends export
 
 ---
 
-### Week 2 In-class Exercises (TP L3 - Q3 & Q4)
+### Week 2 In-class Exercises (L3 - Q3 & Q4)
 
-***TurningPoint Session ID: bua455s22***
+***Session ID: bua455s23***
 
 **`Q3.`** What type of file is the README file?
 
 <br>
 
-**`Q4.`** We will use the `pacman` R package, in every lecture, and assignment because which simplifies installing a loading other packages.
+**`Q4.`** We will use the `pacman` R package, in every lecture, and assignment because it simplifies installing a loading other packages.
 
-There is another package (actually it's a package suite) that includes both `dplyr` and `ggplot2` that we will will we use in every lecture and assignment and quiz in BUA 455.
+There is another package (actually it's a package suite that includes both `dplyr` and `ggplot2`) that we will will we use in every lecture, assignment, and quiz in BUA 455.
 
 The name of this package suite is `____`.
 
@@ -568,21 +595,20 @@ Students are encouraged but not required to ***work with a partner*** at least o
    
    - Working with a partner at least once will help during group project.
    
-**My Recommendation for Easy Collaboration:**
+**Easy Collaboration for now:**
 
-  - Each student should make their own R project and internal `code_data_output` folder for HW 2.
-  
+  - Each student makes their own R project and internal `code_data_output` folder for HW 2.
   - Email or share .Rmd file in a cloud drive
   
-**GitHub** is used for collaboration and version control in more advanced courses and other disciplines.
-
-  - Not required in this course
+**[Posit Cloud](https://posit.cloud/)** allows for "google-drive" style collaboration on an R project with 5 people ($5/month). 
+  
+**GitHub** used for collaboration and version control in more advanced courses and other disciplines (Not required in this course).
 
 ---
 
 ### HW 2 Purpose
 
-[HW Assignment 2]((https://blackboard.syracuse.edu/bbcswebdav/pid-8358216-dt-content-rid-95103694_1/xid-95103694_1) will give you experience with:
+**HW Assignment 2** will give you experience with:
 
 - Creating an R Project Directory and a code_data_output folder (Review)
 
@@ -598,7 +624,7 @@ Students are encouraged but not required to ***work with a partner*** at least o
 
 - Creating a basic plot with minimal formatting
 
-You are also encouraged to work with someone on HW 2, HW 3, or HW 4.
+You are encouraged to work with someone on HW 2, HW 3, or HW 4.
 
   - Practice sharing files with a partner.
 
@@ -633,7 +659,7 @@ You are also encouraged to work with someone on HW 2, HW 3, or HW 4.
 ---
 title: "HW 2"
 authors: "Penelope Pooler"
-date: "Due 9/14/2022"
+date: "Due 2/1/2023"
 output: 
   html_document:
     toc: true
@@ -752,9 +778,9 @@ my_diamonds |> pull(cut) |> unique()
 
 ---
 
-### Week 2 In-class Exercises (TP L4 - Q1)
+### Week 2 In-class Exercises (L4 - Q1)
 
-***TurningPoint Session ID: bua455s22***
+***Session ID: bua455s23***
 
 **This is also BB Question 1 of HW 2**
 
@@ -768,9 +794,9 @@ How many rows and columns are in the `diamonds` dataset that is saved as `my_dia
 
 class: middle
 
-### Week 2 In-class Exercises (TP L4 - Q2)
+### Week 2 In-class Exercises (L4 - Q2)
 
-***TurningPoint Session ID: bua455s22***
+***Session ID: bua455s23***
 
 
 
@@ -869,10 +895,6 @@ my_diamonds2 <- my_diamonds |>
 
 <br>
    
-**`3.`** Answer the following Blackboard Question to verify that your dataset is correct:
-
-<br>
-   
 **`3.`** Answer Blackboard Question 4 to verify that your dataset is correct.
 
 <br>
@@ -933,9 +955,9 @@ my_diamonds2 <- my_diamonds |>
 
 <br>
    
-**`3.`** Use the example **`summary`** command code to summarize the factor variable **`clarity`** in the final **`my_diamonds3`** dataset.
+**`4.`** Use the example **`summary`** command code to summarize the factor variable **`clarity`** in the final **`my_diamonds3`** dataset.
 
-**`4.`** Answer Blackboard Questions 5 and 6 to verify that you have completed these steps correctly.
+**`5.`** Answer Blackboard Questions 5 and 6 to verify that you have completed these steps correctly.
 
 <br>
 
@@ -1178,7 +1200,7 @@ scatter_clarity <- my_diamonds |>
 
 <br>
 
-**You may submit an 'Engagement Question or Comment' about Week 2 lectures until Thursday, 9/8, at midnight on Blackboard.**
+You may submit an 'Engagement Question' about each lecture until midnight on the day of the lecture. **A minimum of four submissions are required during the semester.**
 
 
 

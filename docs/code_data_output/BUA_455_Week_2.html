@@ -2107,8 +2107,10 @@ folder.</li>
 <ul>
 <li>Use <code>ggsave</code> command</li>
 <li>Defaults to last plot displayed</li>
+<li>Below I override the default to specify plot I want.</li>
 </ul>
-<pre class="r"><code>ggsave(&quot;StarWars_BMI_Boxplot.png&quot;, width = 8, height = 6)</code></pre>
+<pre class="r"><code>ggsave(&quot;StarWars_BMI_Boxplot.png&quot;, 
+       plot=sw_box4, width = 8, height = 6)</code></pre>
 <hr />
 </div>
 <div id="creating-a-readme-file" class="section level3">

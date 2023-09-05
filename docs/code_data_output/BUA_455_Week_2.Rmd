@@ -528,11 +528,12 @@ sw_box4
 
 - Use `ggsave` command
 - Defaults to last plot displayed
+- Below I override the default to specify plot I want.
+
  
-```{r export final plot, message=FALSE, results='hide'}
-
-ggsave("StarWars_BMI_Boxplot.png", width = 8, height = 6)
-
+```{r export final plot, echo=T}
+ggsave("StarWars_BMI_Boxplot.png", 
+       plot=sw_box4, width = 8, height = 6)
 ```
 
 ---

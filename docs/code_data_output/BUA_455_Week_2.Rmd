@@ -104,9 +104,9 @@ p_loaded()
 
 ### Reminders:
 
-#### Pre-class Survey Due Wed. 1/25
+#### Pre-class Survey Due Wed. 9/6
 
-#### HW 1 (Parts 1, 2, and 3) Due 1/25
+#### HW 1 (Parts 1, 2, and 3) Due 9/6
 
 .bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
 
@@ -525,15 +525,13 @@ sw_box4
 
 
 **Method 2:**
- Use `png` (or similar) command(s):
- 
-- Other file formats include `.jpg, .tif, .exp`
 
+- Use `ggsave` command
+- Defaults to last plot displayed
+ 
 ```{r export final plot, message=FALSE, results='hide'}
-# export plot as .png file using png command
-png("StarWars_BMI_Boxplot.png") # file name
-sw_box4                         # name of R plot               
-dev.off()                       # ends export
+
+ggsave("StarWars_BMI_Boxplot.png", width = 8, height = 6)
 
 ```
 
@@ -1200,7 +1198,8 @@ scatter_clarity <- my_diamonds |>
 
 <br>
 
-You may submit an 'Engagement Question' about each lecture until midnight on the day of the lecture. **A minimum of four submissions are required during the semester.**
+You may submit an 'Engagement Question' about each lecture until midnight on the day of the lecture. 
+**A minimum of four submissions are required during the semester.**
 
 
 

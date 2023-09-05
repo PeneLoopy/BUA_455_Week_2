@@ -1,7 +1,7 @@
 ---
 title: "HW 2 Instructions"
 author: "Penelope Pooler Eisenbies"
-date: "Due 2/1/2023"
+date: "Due 9/13/2023"
 output: 
   html_document:
     toc: true
@@ -63,7 +63,7 @@ You are also encouraged to work with someone on HW 2, HW 3, or HW 4.
    
 **`2.`** Create a folder in your R project labeled **`code_data_output`**.
 
-**`3.`** Download the provided file, **[`HW2_Template.Rmd`](https://blackboard.syracuse.edu/bbcswebdav/pid-8358216-dt-content-rid-95103695_1/xid-95103695_1)** 
+**`3.`** Download the provided file, **`HW2_Template.Rmd`** from Blackboard
 
 **`4.`** Save the downloaded **`HW2_Template.Rmd`** file to your code_data_output folder
 
@@ -87,7 +87,7 @@ You are also encouraged to work with someone on HW 2, HW 3, or HW 4.
 ---
 title: "HW 2"
 authors: "Penelope Pooler"
-date: "Due 9/14/2022"
+date: "Due 9/13/2023"
 output: 
   html_document:
     toc: true

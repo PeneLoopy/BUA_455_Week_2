@@ -254,9 +254,9 @@ class: bottom, right
 
 ### Reminders:
 
-#### Pre-class Survey Due Wed. 1/25
+#### Pre-class Survey Due Wed. 9/6
 
-#### HW 1 (Parts 1, 2, and 3) Due 1/25
+#### HW 1 (Parts 1, 2, and 3) Due 9/6
 
 .bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
 
@@ -321,7 +321,7 @@ For example
 
 ### Week 2 In-class Exercises (L3 - Q1)
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 Use the **Operators in R** reference link above to find the operator that is put before **`=`** to indicate **not equal to**.
 
@@ -503,7 +503,7 @@ class: middle
 <br>
 <br>
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 The select command is used to select `___` and can be used to `___` them.
 
@@ -721,15 +721,14 @@ sw_box4_grid <- my_starwars_plt |>
 - Ideally work should be saved to your `code_data_output` folder.
 
 **Method 2:**
- Use `png` (or similar) command(s):
- 
-- Other file formats include `.jpg, .tif, .exp`
 
-```{r export final plot, message=FALSE, results='hide'}
-# export plot as .png file using png command
-png("StarWars_BMI_Boxplot.png") # file name
-sw_box4                         # name of R plot               
-dev.off()                       # ends export
+- Use `ggsave` command
+- Defaults to last plot displayed
+ 
+```{r export final plot, eval=F}
+
+sw_box4
+ggsave("StarWars_BMI_Boxplot.png", width = 8, height = 6)
 
 ```
 
@@ -788,7 +787,7 @@ class: middle
 
 <br>
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 **`Q3.`** What type of file is the README file?
 
@@ -1069,7 +1068,7 @@ class: middle
 <br>
 <br>
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 <br>
 
@@ -1101,7 +1100,7 @@ class: middle
 <br>
 <br>
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 <br>
 

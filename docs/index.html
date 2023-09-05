@@ -4,7 +4,7 @@
     <title>BUA 455 - Week 2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Penelope Pooler Eisenbies" />
-    <meta name="date" content="2023-01-24" />
+    <meta name="date" content="2023-09-05" />
     <script src="docs_files/header-attrs/header-attrs.js"></script>
     <link href="docs_files/panelset/panelset.css" rel="stylesheet" />
     <script src="docs_files/panelset/panelset.js"></script>
@@ -49,7 +49,7 @@ class: bottom, right
 
 #### Penelope Pooler Eisenbies
 
-#### "2023-01-24"
+#### "2023-09-05"
 
 [Wikipedia Sloth Page](https://en.wikipedia.org/wiki/Sloth)
 
@@ -153,9 +153,9 @@ class: bottom, right
 
 ### Reminders:
 
-#### Pre-class Survey Due Wed. 1/25
+#### Pre-class Survey Due Wed. 9/6
 
-#### HW 1 (Parts 1, 2, and 3) Due 1/25
+#### HW 1 (Parts 1, 2, and 3) Due 9/6
 
 .bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
 
@@ -220,7 +220,7 @@ For example
 
 ### Week 2 In-class Exercises (L3 - Q1)
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 Use the **Operators in R** reference link above to find the operator that is put before **`=`** to indicate **not equal to**.
 
@@ -455,7 +455,7 @@ class: middle
 &lt;br&gt;
 &lt;br&gt;
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 The select command is used to select `___` and can be used to `___` them.
 
@@ -725,16 +725,19 @@ my_starwars_plt &lt;- my_starwars_plt |&gt;
 - Ideally work should be saved to your `code_data_output` folder.
 
 **Method 2:**
- Use `png` (or similar) command(s):
- 
-- Other file formats include `.jpg, .tif, .exp`
 
+- Use `ggsave` command
+- Defaults to last plot displayed
+ 
 
 ```r
-# export plot as .png file using png command
-png("StarWars_BMI_Boxplot.png") # file name
-sw_box4                         # name of R plot               
-dev.off()                       # ends export
+sw_box4
+```
+
+&lt;img src="docs_files/figure-html/export final plot-1.png" width="504" /&gt;
+
+```r
+ggsave("StarWars_BMI_Boxplot.png", width = 8, height = 6)
 ```
 
 ]
@@ -790,7 +793,7 @@ class: middle
 
 &lt;br&gt;
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 **`Q3.`** What type of file is the README file?
 
@@ -1071,7 +1074,7 @@ class: middle
 &lt;br&gt;
 &lt;br&gt;
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 &lt;br&gt;
 
@@ -1103,7 +1106,7 @@ class: middle
 &lt;br&gt;
 &lt;br&gt;
 
-***Session ID: bua455s23***
+***Session ID: bua455f23***
 
 &lt;br&gt;
 

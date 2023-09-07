@@ -1302,7 +1302,7 @@ my_diamonds2 <- my_diamonds |>
 
 **`3.`**. Use one of the examples in the provided R code for Chunk 5 to complete these **TWO** specified filter tasks:
 
-- filter **`my_diamonds3`** to diamonds weighing 1.5 or more carats
+- filter **`my_diamonds3`** to diamonds weighing 1.25 or more carats
 
 - filter **`my_diamonds3`** to these categories: **Very Good, Premium, Ideal**
 

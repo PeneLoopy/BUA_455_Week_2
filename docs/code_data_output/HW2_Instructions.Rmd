@@ -1,7 +1,7 @@
 ---
 title: "HW 2 Instructions"
 author: "Penelope Pooler Eisenbies"
-date: "Due 9/13/2023"
+date: "Due 1/31/2024"
 output: 
   html_document:
     toc: true
@@ -87,7 +87,7 @@ You are also encouraged to work with someone on HW 2, HW 3, or HW 4.
 ---
 title: "HW 2"
 authors: "Penelope Pooler"
-date: "Due 9/13/2023"
+date: "Due 1/31/2024"
 output: 
   html_document:
     toc: true

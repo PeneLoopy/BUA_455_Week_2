@@ -254,9 +254,9 @@ class: bottom, right
 
 ### Reminders:
 
-#### Pre-class Survey Due Wed. 9/6
+#### Pre-class Survey Due Wed. 1/24
 
-#### HW 1 (Parts 1, 2, and 3) Due 9/6
+#### HW 1 (Parts 1, 2, and 3) Due 1/24
 
 .bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
 
@@ -321,7 +321,7 @@ For example
 
 ### Week 2 In-class Exercises (L3 - Q1)
 
-***Session ID: bua455f23***
+***Session ID: bua455s24***
 
 Use the **Operators in R** reference link above to find the operator that is put before **`=`** to indicate **not equal to**.
 
@@ -503,7 +503,7 @@ class: middle
 <br>
 <br>
 
-***Session ID: bua455f23***
+***Session ID: bua455s24***
 
 The select command is used to select `___` and can be used to `___` them.
 
@@ -787,7 +787,7 @@ class: middle
 
 <br>
 
-***Session ID: bua455f23***
+***Session ID: bua455s24***
 
 **`Q3.`** What type of file is the README file?
 
@@ -1068,7 +1068,7 @@ class: middle
 <br>
 <br>
 
-***Session ID: bua455f23***
+***Session ID: bua455s24***
 
 <br>
 
@@ -1100,7 +1100,7 @@ class: middle
 <br>
 <br>
 
-***Session ID: bua455f23***
+***Session ID: bua455s24***
 
 <br>
 

@@ -104,9 +104,9 @@ p_loaded()
 
 ### Reminders:
 
-#### Pre-class Survey Due Wed. 9/6
+#### Pre-class Survey Due Wed. 1/24
 
-#### HW 1 (Parts 1, 2, and 3) Due 9/6
+#### HW 1 (Parts 1, 2, and 3) Due 1/24
 
 .bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3.mt2.mb2[
 
@@ -171,7 +171,7 @@ For example
 
 ### Week 2 In-class Exercises (L3 - Q1)
 
-***Session ID: bua455s23***
+***Session ID: bua455f24***
 
 Use the **Operators in R** reference link above to find the operator that is put before **`=`** to indicate **not equal to**.
 
@@ -329,7 +329,7 @@ my_starwars_plt <- my_starwars |>
 
 ### Week 2 In-class Exercises (L3 - Q2)
 
-***Session ID: bua455s23***
+***Session ID: bua455f24***
 
 The select command is used to select `___` and can be used to `___` them.
 
@@ -568,7 +568,7 @@ ggsave("StarWars_BMI_Boxplot.png",
 
 ### Week 2 In-class Exercises (L3 - Q3 & Q4)
 
-***Session ID: bua455s23***
+***Session ID: bua455f24***
 
 **`Q3.`** What type of file is the README file?
 
@@ -779,7 +779,7 @@ my_diamonds |> pull(cut) |> unique()
 
 ### Week 2 In-class Exercises (L4 - Q1)
 
-***Session ID: bua455s23***
+***Session ID: bua455f24***
 
 **This is also BB Question 1 of HW 2**
 
@@ -795,7 +795,7 @@ class: middle
 
 ### Week 2 In-class Exercises (L4 - Q2)
 
-***Session ID: bua455s23***
+***Session ID: bua455f24***
 
 
 
